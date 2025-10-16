@@ -1,0 +1,130 @@
+/* ================================
+   CaseFlow AI - Analysis Page Styles
+   ================================ */
+
+.analysis-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  background-color: #f9fafb;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  color: #111827;
+}
+
+/* ================================
+   Header Section
+   ================================ */
+.analysis-page h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color, #2563eb);
+  margin-bottom: 0.5rem;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.analysis-page p {
+  font-size: 1.1rem;
+  color: #4b5563;
+  margin-bottom: 1.5rem;
+  animation: fadeInUp 1s ease-out;
+}
+
+/* ================================
+   Analysis Container
+   ================================ */
+.analysis-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.analysis-card {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.analysis-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.analysis-card h3 {
+  font-size: 1.25rem;
+  color: var(--primary-color, #2563eb);
+  margin-bottom: 0.5rem;
+}
+
+.analysis-card p {
+  color: #374151;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ================================
+   Button Style
+   ================================ */
+.analysis-page button {
+  align-self: start;
+  background: var(--primary-color, #2563eb);
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 1rem;
+}
+
+.analysis-page button:hover {
+  background: var(--secondary-color, #1e40af);
+}
+
+/* ================================
+   Animations
+   ================================ */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================================
+   Responsive Design
+   ================================ */
+@media (max-width: 768px) {
+  .analysis-page {
+    padding: 1.5rem;
+  }
+
+  .analysis-page h2 {
+    font-size: 1.75rem;
+  }
+
+  .analysis-container {
+    grid-template-columns: 1fr;
+  }
+}

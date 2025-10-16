@@ -1,0 +1,119 @@
+.sidebar {
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  width: 240px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+/* Collapsed (Desktop Only) */
+.sidebar.collapsed {
+  width: 80px;
+}
+
+.sidebar-toggle {
+  text-align: center;
+  padding: 1rem;
+  cursor: pointer;
+  background: var(--primary-color, #2563eb);
+  color: white;
+  font-weight: bold;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.25rem;
+  text-decoration: none;
+  color: #374151;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.sidebar-link:hover {
+  background: #f3f4f6;
+  color: var(--primary-color, #2563eb);
+}
+
+.sidebar-link.active {
+  background: var(--primary-color, #2563eb);
+  color: #ffffff;
+}
+
+.sidebar-icon {
+  font-size: 1.2rem;
+  min-width: 24px;
+}
+
+.sidebar-label {
+  font-size: 1rem;
+}
+
+/* Collapsed mode hides labels */
+.sidebar.collapsed .sidebar-label {
+  display: none;
+}
+
+/* =============================
+   Mobile Responsive Drawer
+   ============================= */
+
+.mobile-toggle {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  background: var(--primary-color, #2563eb);
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 1100;
+  display: none;
+}
+
+/* Drawer behavior */
+@media (max-width: 768px) {
+  .mobile-toggle {
+    display: block;
+  }
+
+  .sidebar {
+    left: -100%;
+    width: 240px;
+    transition: left 0.3s ease;
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+
+  .sidebar.closed {
+    left: -100%;
+  }
+
+  /* Overlay effect when drawer is open */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 900;
+  }
+
+  .sidebar.collapsed {
+    width: 240px; /* No collapse in mobile */
+  }
+}

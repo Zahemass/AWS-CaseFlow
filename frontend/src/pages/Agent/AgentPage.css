@@ -1,0 +1,34 @@
+.agent-page {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 120px);
+  margin-left: 240px;
+  padding: 1.5rem;
+  background: #f9fafb;
+}
+
+.agent-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.agent-subtitle {
+  color: #6b7280;
+  margin-bottom: 1rem;
+}
+
+body.dark-mode .agent-page {
+  background: #111827;
+  color: #f9fafb;
+}
+
+body.dark-mode .agent-title {
+  color: #f3f4f6;
+}
+
+body.dark-mode .agent-subtitle {
+  color: #9ca3af;
+}
+    

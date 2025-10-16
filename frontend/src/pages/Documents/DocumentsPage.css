@@ -1,0 +1,150 @@
+/* ====================================
+   CaseFlow AI - Documents Page Styles
+   ==================================== */
+
+.documents-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: #f9fafb;
+  font-family: 'Roboto', sans-serif;
+  color: #111827;
+}
+
+/* ====================================
+   Header
+   ==================================== */
+.documents-page h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color, #2563eb);
+  margin-bottom: 0.5rem;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.documents-page p {
+  font-size: 1.1rem;
+  color: #4b5563;
+  margin-bottom: 2rem;
+  animation: fadeInUp 1s ease-out;
+}
+
+/* ====================================
+   Upload Section
+   ==================================== */
+.upload-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.upload-section button {
+  background: var(--primary-color, #2563eb);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.upload-section button:hover {
+  background: var(--secondary-color, #1e40af);
+}
+
+/* ====================================
+   Documents Grid
+   ==================================== */
+.documents-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.document-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  padding: 1.25rem;
+  transition: all 0.3s ease;
+}
+
+.document-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.document-card h3 {
+  font-size: 1.2rem;
+  color: var(--primary-color, #2563eb);
+  margin-bottom: 0.5rem;
+}
+
+.document-card p {
+  color: #374151;
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+}
+
+/* ====================================
+   Empty State
+   ==================================== */
+.empty-documents {
+  text-align: center;
+  margin-top: 3rem;
+  color: #6b7280;
+  font-size: 1.1rem;
+}
+
+/* ====================================
+   Animations
+   ==================================== */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ====================================
+   Responsive Design
+   ==================================== */
+@media (max-width: 768px) {
+  .documents-page {
+    padding: 1.5rem;
+  }
+
+  .upload-section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .documents-grid {
+    grid-template-columns: 1fr;
+  }
+}

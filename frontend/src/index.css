@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f7f9fc;
+  color: #222;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+* {
+  box-sizing: border-box;
+}
+:root {
+  --hover-bg: #f3f4f6;
+}
+
+[data-theme='dark'] {
+  --hover-bg: #374151;
+}
+

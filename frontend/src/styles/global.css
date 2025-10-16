@@ -1,0 +1,43 @@
+/* ======================================
+   Global Light & Dark Theme Support
+   ====================================== */
+
+:root {
+  --primary-color: #2563eb;
+  --secondary-color: #1e40af;
+  --bg-color: #f9fafb;
+  --card-bg: #ffffff;
+  --text-color: #111827;
+  --text-muted: #6b7280;
+  --border-color: #e5e7eb;
+}
+
+[data-theme='dark'] {
+  --bg-color: #111827;
+  --card-bg: #1f2937;
+  --text-color: #f3f4f6;
+  --text-muted: #9ca3af;
+  --border-color: #374151;
+  --primary-color: #3b82f6;
+  --secondary-color: #60a5fa;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Common elements adapt automatically */
+.sidebar,
+.navbar,
+.footer,
+.card,
+.analysis-page,
+.cases-page,
+.documents-page,
+.dashboard-page {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  transition: background 0.3s ease, color 0.3s ease;
+}

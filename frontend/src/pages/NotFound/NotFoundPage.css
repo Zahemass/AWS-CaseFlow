@@ -1,0 +1,92 @@
+/* ================================
+   CaseFlow AI - Not Found Page Styles
+   ================================ */
+
+.not-found-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  background-color: #f7f9fc;
+  color: var(--text-color, #111827);
+  font-family: 'Roboto', sans-serif;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.not-found-page h1 {
+  font-size: 6rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--primary-color, #2563eb);
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.not-found-page p {
+  font-size: 1.25rem;
+  margin-top: 1rem;
+  color: #4b5563;
+  animation: fadeInUp 1s ease-out;
+}
+
+.not-found-page a {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--primary-color, #2563eb);
+  color: #fff;
+  font-weight: 500;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.not-found-page a:hover {
+  background: var(--secondary-color, #1e40af);
+}
+
+/* ================================
+   Animations
+   ================================ */
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================================
+   Responsive Design
+   ================================ */
+
+@media (max-width: 600px) {
+  .not-found-page h1 {
+    font-size: 4rem;
+  }
+
+  .not-found-page p {
+    font-size: 1rem;
+  }
+
+  .not-found-page a {
+    padding: 0.6rem 1.2rem;
+  }
+}

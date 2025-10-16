@@ -1,0 +1,47 @@
+.agent-response {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: #f3f4f6;
+  border-radius: 8px;
+}
+
+.citations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.citation {
+  position: relative;
+  cursor: pointer;
+}
+
+.citation-ref {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.citation-popover {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+body.dark-mode .agent-response {
+  background: #1f2937;
+}
+
+body.dark-mode .citation-popover {
+  background: #374151;
+  color: #f3f4f6;
+  border-color: #4b5563;
+}
