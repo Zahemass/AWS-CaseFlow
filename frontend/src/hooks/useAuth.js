@@ -1,8 +1,33 @@
-import { useSelector, useDispatch } from 'react-redux'
-import { setUser, logout } from '../store/slices/authSlice'
+import { useEffect, useState, useCallback } from 'react';
+import { login, logout, register, getCurrentUser } from '../services/auth/authService';
 
-export default function useAuth() {
-  const user = useSelector((state) => state.auth.user)
-  const dispatch = useDispatch()
-  return { user, setUser: (u) => dispatch(setUser(u)), logout: () => dispatch(logout()) }
-}
+export const useAuth = () => {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const fetchUser = useCallback(async () => {
+    setLoading(true);
+    const result = await getCurrentUser();
+    setUser(result?.user || null);
+    setLoading(false);
+  }, []);
+
+  useEffect(() => {
+    fetchUser();
+  }, [fetchUser]);
+
+  const signIn = async (email, password) => {
+    const user = await login(email, password);
+    setUser(user);
+  };
+
+  const signUp = async (email, password) => await register(email, password);
+
+  const signOut = async () => {
+    await logout();
+    setUser(null);
+  };
+
+  return { user, loading, signIn, signUp, signOut, refreshUser: fetchUser };
+};
+export default useAuth;

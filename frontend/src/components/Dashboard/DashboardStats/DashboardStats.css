@@ -1,0 +1,4 @@
+.dash-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.stat-card{background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);padding:16px;text-align:center}
+.stat-card .v{font-size:24px;font-weight:700}
+.stat-card .l{color:#666;margin-top:4px}

@@ -1,51 +1,69 @@
-import React, { useState } from 'react'
-import './CasesPage.css'
+import React, { useState, useEffect } from 'react';
+import './CasesPage.css';
+import { CaseList, CreateCaseModal, CaseStats } from '../../components';
+import { listCases, createNewCase } from '../../services/cases/caseService';
 
 const CasesPage = () => {
-  const [searchTerm, setSearchTerm] = useState('')
-  const cases = [
-    { id: 1, title: 'State vs Johnson', status: 'Open', date: '12 Oct 2025' },
-    { id: 2, title: 'Miller vs Green Corp.', status: 'Closed', date: '09 Oct 2025' },
-    { id: 3, title: 'Adams vs Knight', status: 'In Progress', date: '05 Oct 2025' },
-  ]
+  const [cases, setCases] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  const filteredCases = cases.filter((c) =>
-    c.title.toLowerCase().includes(searchTerm.toLowerCase())
-  )
+  const fetchCases = async () => {
+    try {
+      const data = await listCases();
+      const casesArray = Array.isArray(data) ? data : data?.items || [];
+      setCases(casesArray);
+    } catch (err) {
+      console.error('Error loading cases:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchCases();
+  }, []);
+
+  const handleCreate = async (caseData) => {
+    try {
+      await createNewCase(caseData);
+      setOpen(false);
+      await fetchCases();
+    } catch (err) {
+      console.error('Error creating case:', err);
+    }
+  };
 
   return (
     <div className="cases-page">
-      <h2>Case Management</h2>
-      <p>Manage, view, and track all ongoing and past cases efficiently.</p>
-
-      <div className="case-actions">
-        <input
-          type="text"
-          placeholder="Search by case title..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <button>Create New Case</button>
+      <div className="cases-header">
+        <h2>Cases</h2>
+        <button onClick={() => setOpen(true)}>+ New Case</button>
       </div>
 
-      {filteredCases.length > 0 ? (
-        <div className="cases-grid">
-          {filteredCases.map((item) => (
-            <div key={item.id} className="case-card">
-              <h3>{item.title}</h3>
-              <p>Status: {item.status}</p>
-              <p>Date: {item.date}</p>
-              <button>View Details</button>
-            </div>
-          ))}
-        </div>
+      {loading ? (
+        <p>Loading cases...</p>
       ) : (
-        <div className="empty-cases">
-          <p>No cases found. Try searching again.</p>
-        </div>
+        <>
+          <CaseStats
+            stats={{
+              total: cases.length,
+              open: cases.filter((c) => c.status === 'Open').length,
+              closed: cases.filter((c) => c.status === 'Closed').length,
+            }}
+          />
+          <CaseList cases={cases} />
+        </>
+      )}
+
+      {open && (
+        <CreateCaseModal
+          onCreate={handleCreate}
+          onClose={() => setOpen(false)}
+        />
       )}
     </div>
-  )
-}
+  );
+};
 
-export default CasesPage
+export default CasesPage;

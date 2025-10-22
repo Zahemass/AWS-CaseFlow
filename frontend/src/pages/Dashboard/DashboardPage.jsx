@@ -1,56 +1,46 @@
-import React from 'react'
-import './DashboardPage.css'
+import React, { useEffect, useState } from 'react';
+import './DashboardPage.css';
+import { DashboardStats, RecentActivity } from '../../components';
+import { getDashboardStats } from '../../services/api/dashboardService'; // 👈 new file
 
 const DashboardPage = () => {
-  const stats = [
-    { id: 1, title: 'Active Cases', value: 24 },
-    { id: 2, title: 'Documents Uploaded', value: 82 },
-    { id: 3, title: 'AI Analyses Run', value: 15 },
-    { id: 4, title: 'Pending Reviews', value: 7 },
-  ]
+  const [stats, setStats] = useState({ cases: 0, documents: 0, analyses: 0 });
+  const [recent, setRecent] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const activities = [
-    'Uploaded “Case Evidence #1”',
-    'Created new case “State vs Johnson”',
-    'Ran credibility analysis',
-    'Viewed timeline report',
-  ]
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const data = await getDashboardStats(); // fetch from backend
+        setStats({
+          cases: data.cases || 0,
+          documents: data.documents || 0,
+          analyses: data.analyses || 0,
+        });
+        setRecent(data.recent || []);
+      } catch (err) {
+        console.error('Error fetching stats:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchStats();
+  }, []);
 
   return (
     <div className="dashboard-page">
-      <div className="dashboard-header">
-        <h2>Dashboard Overview</h2>
-        <p>Monitor your case progress, AI insights, and document activities.</p>
-      </div>
+      <h2>Dashboard</h2>
 
-      <div className="dashboard-stats">
-        {stats.map((item) => (
-          <div key={item.id} className="stat-card">
-            <h3>{item.title}</h3>
-            <div className="value">{item.value}</div>
-          </div>
-        ))}
-      </div>
-
-      <div className="quick-actions">
-        <button>Create New Case</button>
-        <button>Upload Document</button>
-        <button>Run AI Analysis</button>
-      </div>
-
-      <div className="recent-activity">
-        <h3>Recent Activity</h3>
-        <div className="activity-list">
-          {activities.map((act, i) => (
-            <div key={i} className="activity-item">
-              <span>{act}</span>
-              <span>🕒 Just now</span>
-            </div>
-          ))}
-        </div>
-      </div>
+      {loading ? (
+        <p>Loading dashboard...</p>
+      ) : (
+        <>
+          <DashboardStats stats={stats} />
+          <RecentActivity recent={recent} />
+        </>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default DashboardPage
+export default DashboardPage;

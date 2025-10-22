@@ -1,0 +1,200 @@
+/* ========================================
+   EVIDENCE CHAIN - MODERN DESIGN
+   ======================================== */
+
+.evidence {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.evidence h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #212529;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.evidence h3::before {
+  content: '🔗';
+  font-size: 20px;
+}
+
+/* Graph Container */
+.graph {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  min-height: 200px;
+  border: 1px solid #e9ecef;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.graph::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(90deg, rgba(0, 123, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(rgba(0, 123, 255, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+/* Evidence Node */
+.node {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 2px solid #007bff;
+  border-radius: 20px;
+  padding: 8px 14px;
+  margin: 6px;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
+  transition: all 0.25s ease;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.node:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 4px 16px rgba(0, 123, 255, 0.3);
+  border-color: #0056b3;
+  background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
+}
+
+.node-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.node-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #212529;
+  white-space: nowrap;
+}
+
+.node-connector {
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(to right, #007bff, transparent);
+  right: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Node Types */
+.node.primary {
+  border-color: #007bff;
+}
+
+.node.primary .node-icon {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+}
+
+.node.success {
+  border-color: #28a745;
+}
+
+.node.success .node-icon {
+  background: linear-gradient(135deg, #28a745, #1e7e34);
+}
+
+.node.warning {
+  border-color: #ffc107;
+}
+
+.node.warning .node-icon {
+  background: linear-gradient(135deg, #ffc107, #e0a800);
+}
+
+.node.danger {
+  border-color: #dc3545;
+}
+
+.node.danger .node-icon {
+  background: linear-gradient(135deg, #dc3545, #bd2130);
+}
+
+/* Empty State */
+.graph-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: #adb5bd;
+  font-style: italic;
+  font-size: 14px;
+  width: 100%;
+}
+
+.graph-empty::before {
+  content: '🔍';
+  display: block;
+  font-size: 48px;
+  margin-bottom: 12px;
+  opacity: 0.3;
+}
+
+/* Chain Lines */
+.evidence-chain-line {
+  position: absolute;
+  height: 2px;
+  background: linear-gradient(to right, #007bff, #0056b3);
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+.evidence-chain-line:hover {
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .evidence h3 {
+    font-size: 16px;
+  }
+  
+  .graph {
+    padding: 16px;
+    min-height: 160px;
+  }
+  
+  .node {
+    padding: 6px 12px;
+    margin: 4px;
+  }
+  
+  .node-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+  }
+  
+  .node-label {
+    font-size: 12px;
+  }
+}

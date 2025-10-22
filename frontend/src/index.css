@@ -1,21 +1,64 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import './styles/reset.css';
+@import './styles/variables.css';
+@import './styles/typography.css';
+@import './styles/animations.css';
+@import './styles/responsive.css';
+
+html,
+body,
+#root {
+  height: 100%;
   margin: 0;
-  font-family: 'Roboto', sans-serif;
-  background-color: #f7f9fc;
-  color: #222;
+  padding: 0;
 }
+
+body {
+  font-family: 'Inter', var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: var(--line-height);
+  overflow-x: hidden;
+}
+
 a {
   text-decoration: none;
   color: inherit;
 }
-* {
-  box-sizing: border-box;
-}
-:root {
-  --hover-bg: #f3f4f6;
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
 }
 
-[data-theme='dark'] {
-  --hover-bg: #374151;
+::selection {
+  background: var(--color-primary);
+  color: #fff;
 }
 
+/* Loader fallback */
+#root::before {
+  content: '';
+  display: block;
+  height: 3px;
+  width: 0;
+  background: var(--color-primary);
+  animation: progress-bar 1.2s ease-in-out infinite;
+}
+
+@keyframes progress-bar {
+  0% {
+    width: 0%;
+    opacity: 0.4;
+  }
+  50% {
+    width: 80%;
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    opacity: 0.4;
+  }
+}

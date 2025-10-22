@@ -1,0 +1,14 @@
+.btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.btn:hover {
+  opacity: 0.9;
+}
+.btn-disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}

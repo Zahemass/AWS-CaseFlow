@@ -1,0 +1,43 @@
+html { font-size: 100%; }
+body {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 { font-size: clamp(2rem, 2.6vw, 2.6rem); }
+h2 { font-size: clamp(1.6rem, 2.1vw, 2rem); }
+h3 { font-size: clamp(1.3rem, 1.8vw, 1.6rem); }
+h4 { font-size: 1.1rem; }
+h5 { font-size: 1rem; }
+h6 { font-size: .95rem; }
+
+p { margin: .5rem 0 1rem; color: var(--color-text); }
+small, .muted { color: var(--color-muted); }
+
+a.link {
+  color: var(--color-primary);
+  text-underline-offset: 3px;
+}
+a.link:hover { color: var(--color-primary-700); text-decoration: underline; }
+
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  background: rgba(0,0,0,0.04);
+  border-radius: var(--radius-sm);
+}
+code { padding: .15rem .35rem; }
+pre { padding: .8rem; overflow: auto; }
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--color-border);
+  margin: var(--space-6) 0;
+}

@@ -1,0 +1,5 @@
+.doc-meta{background:#fff;padding:16px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.meta-row{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #f1f1f1}
+.meta-row:last-child{border-bottom:none}
+.meta-label{min-width:120px;color:#666}
+.meta-value{color:#222}

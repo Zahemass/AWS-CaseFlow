@@ -1,99 +1,533 @@
-/* ================================
-   CaseFlow AI - Analysis Page Styles
-   ================================ */
+/* ========================================
+   ANALYSIS PAGE - MODERN REDESIGN
+   ======================================== */
+
+/* CSS Variables */
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0056b3;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --info-color: #17a2b8;
+  
+  --bg-primary: #f8f9fa;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --text-muted: #adb5bd;
+  
+  --border-color: #e9ecef;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+/* ========================================
+   BASE STYLES
+   ======================================== */
 
 .analysis-page {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  padding: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+}
+
+/* ========================================
+   PAGE HEADER
+   ======================================== */
+
+.page-header {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  margin-bottom: 32px;
+  box-shadow: var(--shadow-lg);
+  animation: slideDown 0.5s ease;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: white;
+}
+
+.header-icon {
+  font-size: 48px;
+  opacity: 0.9;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.case-id {
+  margin: 8px 0 0 0;
+  font-size: 14px;
+  opacity: 0.85;
+  font-weight: 400;
+}
+
+/* ========================================
+   CONTENT LAYOUT
+   ======================================== */
+
+.content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 500px;
+  gap: 24px;
+  animation: fadeIn 0.6s ease;
+}
+
+.left-column,
+.right-column {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  padding: 2rem;
-  background-color: #f9fafb;
-  min-height: 100vh;
-  font-family: 'Roboto', sans-serif;
-  color: #111827;
+  gap: 20px;
 }
 
-/* ================================
-   Header Section
-   ================================ */
-.analysis-page h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--primary-color, #2563eb);
-  margin-bottom: 0.5rem;
-  animation: fadeInDown 0.8s ease-out;
+/* ========================================
+   COLLAPSIBLE PANELS
+   ======================================== */
+
+.collapsible-panel {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  border: 1px solid var(--border-color);
 }
 
-.analysis-page p {
-  font-size: 1.1rem;
-  color: #4b5563;
-  margin-bottom: 1.5rem;
-  animation: fadeInUp 1s ease-out;
+.collapsible-panel:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
 
-/* ================================
-   Analysis Container
-   ================================ */
-.analysis-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1rem;
-}
-
-.analysis-card {
-  background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-  padding: 1.5rem;
-  transition: all 0.3s ease;
-}
-
-.analysis-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.analysis-card h3 {
-  font-size: 1.25rem;
-  color: var(--primary-color, #2563eb);
-  margin-bottom: 0.5rem;
-}
-
-.analysis-card p {
-  color: #374151;
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-/* ================================
-   Button Style
-   ================================ */
-.analysis-page button {
-  align-self: start;
-  background: var(--primary-color, #2563eb);
-  border: none;
-  color: #fff;
-  font-size: 1rem;
-  font-weight: 500;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
   cursor: pointer;
-  transition: background 0.3s ease;
-  margin-top: 1rem;
+  user-select: none;
+  transition: background var(--transition-fast);
+  border-bottom: 1px solid transparent;
 }
 
-.analysis-page button:hover {
-  background: var(--secondary-color, #1e40af);
+.collapsible-panel.open .panel-header {
+  border-bottom-color: var(--border-color);
+  background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
 }
 
-/* ================================
-   Animations
-   ================================ */
-@keyframes fadeInDown {
+.panel-header:hover {
+  background: var(--bg-primary);
+}
+
+.panel-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.panel-icon {
+  color: var(--primary-color);
+  font-size: 20px;
+}
+
+.panel-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.toggle-icon {
+  color: var(--text-secondary);
+  font-size: 14px;
+  transition: transform var(--transition-fast);
+}
+
+.collapsible-panel.open .toggle-icon {
+  transform: rotate(180deg);
+}
+
+.panel-content {
+  padding: 24px;
+  animation: expandDown 0.3s ease;
+}
+
+/* ========================================
+   INFO CARDS
+   ======================================== */
+
+.info-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  border-left: 4px solid var(--primary-color);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.info-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateX(4px);
+}
+
+.info-card.warning {
+  border-left-color: var(--warning-color);
+  background: linear-gradient(to right, #fff8e1 0%, #ffffff 100%);
+}
+
+.info-card.danger {
+  border-left-color: var(--danger-color);
+  background: linear-gradient(to right, #ffebee 0%, #ffffff 100%);
+}
+
+.info-card.success {
+  border-left-color: var(--success-color);
+  background: linear-gradient(to right, #e8f5e9 0%, #ffffff 100%);
+}
+
+.card-icon-wrapper {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-icon {
+  color: white;
+  font-size: 16px;
+}
+
+.info-card.warning .card-icon-wrapper {
+  background: var(--warning-color);
+}
+
+.info-card.danger .card-icon-wrapper {
+  background: var(--danger-color);
+}
+
+.card-content {
+  flex: 1;
+}
+
+.card-content h4 {
+  margin: 0 0 8px 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.card-content p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* ========================================
+   TEXT CONTENT
+   ======================================== */
+
+.summary-text {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-primary);
+  margin: 0;
+  text-align: justify;
+}
+
+.muted-text {
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 14px;
+  margin: 0;
+  text-align: center;
+  padding: 20px;
+}
+
+/* ========================================
+   KEY POINTS
+   ======================================== */
+
+.key-points-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.key-point {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 14px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-fast);
+}
+
+.key-point:hover {
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-sm);
+  transform: translateX(4px);
+}
+
+.point-number {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+}
+
+.key-point p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+/* ========================================
+   RISKS LIST
+   ======================================== */
+
+.risks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ========================================
+   TAG LIST
+   ======================================== */
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag-item {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
+  transition: all var(--transition-fast);
+  cursor: default;
+}
+
+.tag-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+/* ========================================
+   CONCLUSION BOX
+   ======================================== */
+
+.conclusion-box {
+  background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
+  border-left: 4px solid var(--primary-color);
+  padding: 20px;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+
+.conclusion-box p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-primary);
+  text-align: justify;
+}
+
+/* ========================================
+   ANALYSIS COMPONENTS
+   ======================================== */
+
+.analysis-components {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 24px;
+}
+
+.analysis-components > * {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-normal);
+}
+
+.analysis-components > *:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   FARBOT BUTTON
+   ======================================== */
+
+.farbot-button {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 16px 24px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+  transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 1000;
+  font-size: 15px;
+  font-weight: 600;
+  animation: pulse 2s infinite;
+}
+
+.farbot-button:hover {
+  transform: scale(1.05) translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0, 123, 255, 0.5);
+  background: linear-gradient(135deg, #0056b3 0%, #003d82 100%);
+}
+
+.farbot-button:active {
+  transform: scale(0.98);
+}
+
+.farbot-icon {
+  font-size: 22px;
+}
+
+.farbot-label {
+  font-weight: 600;
+}
+
+/* ========================================
+   EMPTY & ERROR STATES
+   ======================================== */
+
+.empty-state,
+.error-state,
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+}
+
+.empty-icon,
+.error-icon {
+  font-size: 64px;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  opacity: 0.5;
+}
+
+.error-icon {
+  color: var(--danger-color);
+  opacity: 0.7;
+}
+
+.empty-state h3,
+.error-state h3 {
+  margin: 0 0 12px 0;
+  font-size: 24px;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.empty-state p,
+.error-state p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+
+/* ========================================
+   LOADING STATE
+   ======================================== */
+
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 4px solid var(--border-color);
+  border-top-color: var(--primary-color);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 20px;
+}
+
+.loading-state p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
   to {
     opacity: 1;
@@ -101,30 +535,253 @@
   }
 }
 
-@keyframes fadeInUp {
+@keyframes expandDown {
   from {
     opacity: 0;
-    transform: translateY(15px);
+    max-height: 0;
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    max-height: 2000px;
   }
 }
 
-/* ================================
-   Responsive Design
-   ================================ */
-@media (max-width: 768px) {
-  .analysis-page {
-    padding: 1.5rem;
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
+}
 
-  .analysis-page h2 {
-    font-size: 1.75rem;
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
   }
+  50% {
+    box-shadow: 0 8px 28px rgba(0, 123, 255, 0.6);
+  }
+}
 
-  .analysis-container {
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+/* Tablet (landscape) */
+@media (max-width: 1200px) {
+  .content-wrapper {
+    grid-template-columns: 1fr 420px;
+    gap: 20px;
+  }
+  
+  .page-header {
+    padding: 24px;
+  }
+  
+  .page-header h1 {
+    font-size: 24px;
+  }
+}
+
+/* Tablet (portrait) */
+@media (max-width: 992px) {
+  .content-wrapper {
     grid-template-columns: 1fr;
   }
+  
+  .analysis-components {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  
+  .analysis-page {
+    padding: 16px;
+  }
+  
+  .farbot-button {
+    bottom: 24px;
+    right: 24px;
+    padding: 14px 20px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .analysis-page {
+    padding: 12px;
+  }
+  
+  .page-header {
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: var(--radius-md);
+  }
+  
+  .header-content {
+    gap: 12px;
+  }
+  
+  .header-icon {
+    font-size: 32px;
+  }
+  
+  .page-header h1 {
+    font-size: 20px;
+  }
+  
+  .case-id {
+    font-size: 12px;
+  }
+  
+  .content-wrapper {
+    gap: 16px;
+  }
+  
+  .left-column,
+  .right-column {
+    gap: 16px;
+  }
+  
+  .panel-header {
+    padding: 16px;
+  }
+  
+  .panel-header h3 {
+    font-size: 16px;
+  }
+  
+  .panel-content {
+    padding: 16px;
+  }
+  
+  .analysis-components {
+    grid-template-columns: 1fr;
+  }
+  
+  .farbot-button {
+    bottom: 16px;
+    right: 16px;
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+  
+  .farbot-label {
+    display: none;
+  }
+  
+  .farbot-button {
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    padding: 0;
+    justify-content: center;
+  }
+  
+  .farbot-icon {
+    font-size: 24px;
+  }
+  
+  .key-point {
+    padding: 12px;
+  }
+  
+  .point-number {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+  }
+  
+  .tag-item {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .analysis-page {
+    padding: 8px;
+  }
+  
+  .page-header {
+    padding: 16px;
+  }
+  
+  .page-header h1 {
+    font-size: 18px;
+  }
+  
+  .panel-header h3 {
+    font-size: 15px;
+  }
+  
+  .summary-text,
+  .conclusion-box p {
+    font-size: 14px;
+  }
+  
+  .key-point p,
+  .card-content p {
+    font-size: 13px;
+  }
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+  .analysis-page {
+    padding: 0;
+    background: white;
+  }
+  
+  .farbot-button {
+    display: none;
+  }
+  
+  .page-header {
+    background: white;
+    color: black;
+    box-shadow: none;
+    border: 2px solid #000;
+  }
+  
+  .header-content {
+    color: black;
+  }
+  
+  .collapsible-panel {
+    page-break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+  
+  .panel-header {
+    border-bottom: 1px solid #000;
+  }
+  
+  .toggle-icon {
+    display: none;
+  }
+  
+  .panel-content {
+    display: block !important;
+  }
+}
+
+.export-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-left: auto;
+}
+
+.export-btn:hover {
+  background-color: #0056b3;
 }

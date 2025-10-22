@@ -1,0 +1,496 @@
+/* =========================
+   Chat Message - Professional Legal Markdown
+   ========================= */
+
+:root {
+  --navy-primary: #1e3a8a;
+  --navy-dark: #1e293b;
+  --gold-accent: #d97706;
+  --blue-light: #3b82f6;
+}
+
+.markdown-message {
+  line-height: 1.7;
+  color: var(--navy-dark);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+/* ================================
+   Typography Hierarchy
+   ================================ */
+
+/* Headings */
+.markdown-message h1,
+.markdown-message h2,
+.markdown-message h3,
+.markdown-message h4 {
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  margin-top: 1.2rem;
+  margin-bottom: 0.6rem;
+  color: var(--navy-primary);
+  position: relative;
+  padding-left: 1rem;
+}
+
+.markdown-message h1 {
+  font-size: 1.5rem;
+  border-left: 4px solid var(--blue-light);
+}
+
+.markdown-message h2 {
+  font-size: 1.3rem;
+  border-left: 3px solid var(--blue-light);
+}
+
+.markdown-message h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  border-left: 3px solid var(--gold-accent);
+}
+
+.markdown-message h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #475569;
+  border-left: 2px solid #cbd5e1;
+}
+
+/* First heading has no top margin */
+.markdown-message h1:first-child,
+.markdown-message h2:first-child,
+.markdown-message h3:first-child,
+.markdown-message h4:first-child {
+  margin-top: 0;
+}
+
+/* ================================
+   Paragraphs & Text
+   ================================ */
+.markdown-message p {
+  margin: 0.8rem 0;
+  line-height: 1.7;
+  color: #334155;
+}
+
+.markdown-message p:first-child {
+  margin-top: 0;
+}
+
+.markdown-message p:last-child {
+  margin-bottom: 0;
+}
+
+/* Emphasis & Strong */
+.markdown-message strong {
+  font-weight: 700;
+  color: var(--navy-primary);
+  background: linear-gradient(to right, rgba(59, 130, 246, 0.08), transparent);
+  padding: 0 3px;
+  border-radius: 2px;
+}
+
+.markdown-message em {
+  color: #475569;
+  font-style: italic;
+}
+
+.markdown-message strong em,
+.markdown-message em strong {
+  color: var(--navy-primary);
+  font-weight: 700;
+}
+
+/* ================================
+   Lists - Enhanced Professional Style
+   ================================ */
+
+/* Unordered lists */
+.markdown-message ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 1rem 0;
+}
+
+.markdown-message ul li {
+  position: relative;
+  padding-left: 1.8rem;
+  margin: 0.6rem 0;
+  line-height: 1.65;
+  color: #334155;
+}
+
+.markdown-message ul li::before {
+  content: '';
+  position: absolute;
+  left: 0.4rem;
+  top: 0.65em;
+  width: 6px;
+  height: 6px;
+  background: var(--blue-light);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* Nested lists */
+.markdown-message ul ul {
+  margin: 0.4rem 0;
+}
+
+.markdown-message ul ul li::before {
+  width: 5px;
+  height: 5px;
+  background: var(--gold-accent);
+  box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.15);
+}
+
+/* Ordered lists - Professional numbering */
+.markdown-message ol {
+  list-style: none;
+  counter-reset: item;
+  padding-left: 0;
+  margin: 1rem 0;
+}
+
+.markdown-message ol li {
+  position: relative;
+  padding-left: 2.2rem;
+  margin: 0.7rem 0;
+  line-height: 1.65;
+  color: #334155;
+  counter-increment: item;
+}
+
+.markdown-message ol li::before {
+  content: counter(item) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 700;
+  color: var(--blue-light);
+  background: rgba(59, 130, 246, 0.1);
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.9em;
+  min-width: 1.6rem;
+  text-align: center;
+}
+
+/* Nested ordered lists */
+.markdown-message ol ol {
+  margin: 0.4rem 0;
+}
+
+.markdown-message ol ol li::before {
+  content: counter(item, lower-alpha) ".";
+  background: rgba(217, 119, 6, 0.1);
+  color: var(--gold-accent);
+}
+
+/* ================================
+   Code Elements
+   ================================ */
+
+/* Inline code */
+.markdown-message code {
+  background: rgba(30, 58, 138, 0.08);
+  color: var(--navy-primary);
+  padding: 0.15rem 0.5rem;
+  border-radius: 5px;
+  font-size: 0.9em;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  font-weight: 500;
+  border: 1px solid rgba(30, 58, 138, 0.12);
+}
+
+/* Code blocks */
+.markdown-message pre {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  color: #e2e8f0;
+  padding: 1.2rem;
+  border-radius: 10px;
+  overflow-x: auto;
+  margin: 1rem 0;
+  border: 1px solid rgba(30, 58, 138, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.markdown-message pre code {
+  background: transparent;
+  color: #e2e8f0;
+  padding: 0;
+  font-family: inherit;
+  border: none;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* ================================
+   Links
+   ================================ */
+.markdown-message a {
+  color: var(--blue-light);
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.markdown-message a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--blue-light);
+  transition: width 0.3s ease;
+}
+
+.markdown-message a:hover {
+  color: var(--navy-primary);
+}
+
+.markdown-message a:hover::after {
+  width: 100%;
+}
+
+/* ================================
+   Blockquotes - Legal Citation Style
+   ================================ */
+.markdown-message blockquote {
+  margin: 1rem 0;
+  padding: 1rem 1.2rem;
+  background: rgba(59, 130, 246, 0.05);
+  border-left: 4px solid var(--blue-light);
+  border-radius: 0 8px 8px 0;
+  color: #475569;
+  font-style: italic;
+}
+
+.markdown-message blockquote p {
+  margin: 0.4rem 0;
+}
+
+.markdown-message blockquote p:first-child {
+  margin-top: 0;
+}
+
+.markdown-message blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* ================================
+   Horizontal Rules
+   ================================ */
+.markdown-message hr {
+  border: none;
+  border-top: 2px solid rgba(30, 58, 138, 0.1);
+  margin: 1.5rem 0;
+  position: relative;
+}
+
+.markdown-message hr::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: var(--blue-light);
+}
+
+/* ================================
+   Tables (if needed)
+   ================================ */
+.markdown-message table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+
+.markdown-message table th,
+.markdown-message table td {
+  padding: 0.7rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(30, 58, 138, 0.1);
+}
+
+.markdown-message table th {
+  background: rgba(59, 130, 246, 0.08);
+  color: var(--navy-primary);
+  font-weight: 700;
+  border-bottom: 2px solid var(--blue-light);
+}
+
+.markdown-message table tr:hover {
+  background: rgba(59, 130, 246, 0.03);
+}
+
+/* ================================
+   Special Elements
+   ================================ */
+
+/* Emoji styling */
+.markdown-message img.emoji {
+  display: inline;
+  height: 1.2em;
+  width: 1.2em;
+  margin: 0 0.1em;
+  vertical-align: -0.1em;
+}
+
+/* Highlight important text */
+.markdown-message mark {
+  background: rgba(217, 119, 6, 0.15);
+  color: var(--navy-dark);
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+}
+
+/* ================================
+   Message Bubble Variants (for user vs agent)
+   ================================ */
+
+/* In user messages, adjust colors for white background */
+.message-bubble.user .markdown-message {
+  color: #ffffff;
+}
+
+.message-bubble.user .markdown-message h1,
+.message-bubble.user .markdown-message h2,
+.message-bubble.user .markdown-message h3,
+.message-bubble.user .markdown-message h4 {
+  color: #ffffff;
+  border-left-color: rgba(255, 255, 255, 0.4);
+}
+
+.message-bubble.user .markdown-message p {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.message-bubble.user .markdown-message strong {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.message-bubble.user .markdown-message code {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.message-bubble.user .markdown-message a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.message-bubble.user .markdown-message ol li::before {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.message-bubble.user .markdown-message ul li::before {
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+}
+
+/* ================================
+   Typewriter Effect
+   ================================ */
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: var(--blue-light);
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  50.1%, 100% { opacity: 0; }
+}
+
+/* ================================
+   Responsive Adjustments
+   ================================ */
+@media (max-width: 768px) {
+  .markdown-message {
+    font-size: 0.95rem;
+  }
+
+  .markdown-message h1 {
+    font-size: 1.3rem;
+  }
+
+  .markdown-message h2 {
+    font-size: 1.15rem;
+  }
+
+  .markdown-message h3 {
+    font-size: 1.05rem;
+  }
+
+  .markdown-message h4 {
+    font-size: 1rem;
+  }
+
+  .markdown-message ul li,
+  .markdown-message ol li {
+    padding-left: 1.6rem;
+  }
+
+  .markdown-message pre {
+    padding: 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .markdown-message {
+    font-size: 0.92rem;
+  }
+
+  .markdown-message h1 {
+    font-size: 1.2rem;
+  }
+
+  .markdown-message h2 {
+    font-size: 1.1rem;
+  }
+
+  .markdown-message ul li,
+  .markdown-message ol li {
+    margin: 0.5rem 0;
+  }
+}
+.message.urgent {
+  border-left: 4px solid #ef4444;
+  background: #fef2f2;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.9; }
+}
+
+.action-btn.primary {
+  background: #3b82f6;
+  color: white;
+  font-weight: 600;
+}
+
+.action-btn.warning {
+  background: #f59e0b;
+  color: white;
+}
+
+.action-btn.secondary {
+  background: #e5e7eb;
+  color: #374151;
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "paths": {
+    "/get-upload-url": {
+      "name": "/get-upload-url",
+      "lambdaFunction": "getUploadUrl",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update"
+        ]
+      }
+    }
+  }
+}

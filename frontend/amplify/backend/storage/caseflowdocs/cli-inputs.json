@@ -1,0 +1,13 @@
+{
+  "resourceName": "caseflowdocs",
+  "policyUUID": "c73c5c0c",
+  "bucketName": "caseflowdocs-dev",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

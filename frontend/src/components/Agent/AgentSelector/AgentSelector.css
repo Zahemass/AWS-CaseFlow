@@ -1,34 +1,292 @@
+/* =========================
+   Agent Selector - Professional Control Bar
+   ========================= */
+
+:root {
+  --navy-primary: #1e3a8a;
+  --navy-dark: #1e293b;
+  --gold-accent: #d97706;
+  --blue-light: #3b82f6;
+}
+
 .agent-selector {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  background: #f9fafb;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  border: 1px solid #e5e7eb;
-  margin-bottom: 1rem;
+  gap: 1rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 255, 0.95) 100%);
+  padding: 1rem 1.3rem;
+  border-radius: 14px;
+  border: 1px solid rgba(30, 58, 138, 0.12);
+  margin-bottom: 0;
+  box-shadow: 0 4px 12px rgba(30, 58, 138, 0.08);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
+.agent-selector::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--blue-light) 50%, 
+    transparent 100%);
+}
+
+.agent-selector:hover {
+  box-shadow: 0 6px 16px rgba(30, 58, 138, 0.12);
+  transform: translateY(-1px);
+}
+
+/* Agent Badge/Icon */
+.agent-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--blue-light) 0%, var(--navy-primary) 100%);
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.agent-badge:hover {
+  transform: rotate(10deg) scale(1.1);
+}
+
+/* Label */
 .agent-selector label {
-  font-weight: 500;
-  color: #111827;
+  font-weight: 700;
+  color: var(--navy-primary);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: -0.2px;
 }
 
+.agent-selector label::after {
+  content: '•';
+  color: var(--gold-accent);
+  font-size: 1.2rem;
+}
+
+/* Select Dropdown */
 .agent-selector select {
-  border: 1px solid #d1d5db;
+  border: 2px solid rgba(30, 58, 138, 0.15);
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  background: #ffffff;
+  color: var(--navy-dark);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%231e3a8a' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  padding-right: 2.5rem;
+}
+
+.agent-selector select:hover {
+  border-color: var(--blue-light);
+  background-color: #fafbff;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15);
+}
+
+.agent-selector select:focus {
+  border-color: var(--blue-light);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Agent Status Indicator */
+.agent-status {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #166534;
+  margin-left: auto;
+}
+
+.agent-status::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.3);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Action Button in Selector */
+.selector-action {
+  background: linear-gradient(135deg, var(--blue-light) 0%, var(--navy-primary) 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-left: auto;
+}
+
+.selector-action:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.35);
+}
+
+.selector-action:active {
+  transform: translateY(0);
+}
+
+/* Info Button */
+.selector-info-btn {
+  background: transparent;
+  border: 2px solid rgba(30, 58, 138, 0.2);
+  color: var(--navy-primary);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 700;
+}
+
+.selector-info-btn:hover {
+  background: var(--blue-light);
+  border-color: var(--blue-light);
+  color: white;
+  transform: scale(1.1);
+}
+
+/* Capabilities Tags */
+.agent-capabilities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.capability-tag {
+  padding: 0.25rem 0.6rem;
   border-radius: 6px;
-  padding: 0.4rem 0.6rem;
-  background: white;
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--navy-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  transition: all 0.2s ease;
 }
 
-body.dark-mode .agent-selector {
-  background: #1f2937;
-  border-color: #374151;
-  color: #f3f4f6;
+.capability-tag:hover {
+  background: rgba(59, 130, 246, 0.15);
+  transform: translateY(-1px);
 }
 
-body.dark-mode .agent-selector select {
-  background: #374151;
-  color: #f3f4f6;
-  border-color: #4b5563;
+/* ================================
+   Animations
+   ================================ */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.2);
+  }
+}
+
+/* ================================
+   Responsive Design
+   ================================ */
+@media (max-width: 768px) {
+  .agent-selector {
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    padding: 0.9rem 1.1rem;
+  }
+
+  .agent-selector label {
+    font-size: 0.95rem;
+    width: 100%;
+  }
+
+  .agent-selector select {
+    flex: 1;
+    min-width: 180px;
+  }
+
+  .agent-status {
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+  }
+
+  .selector-action {
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+  }
+
+  .agent-badge {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .agent-selector {
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    gap: 0.6rem;
+  }
+
+  .agent-selector label {
+    font-size: 0.9rem;
+  }
+
+  .agent-selector select {
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 0.55rem 0.9rem;
+  }
+
+  .selector-action {
+    padding: 0.55rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .capability-tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+  }
 }

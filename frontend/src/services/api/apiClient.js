@@ -1,10 +1,15 @@
-import axios from 'axios'
+import axios from 'axios';
+import { API_BASE_URL } from './endpoints';
+import { setupInterceptors } from './interceptors';
 
+// Create axios instance
 const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-})
+  baseURL: API_BASE_URL,
+  timeout: 30000,
+  headers: { 'Content-Type': 'application/json' },
+});
 
-export default apiClient
+// Attach interceptors for auth + logging
+setupInterceptors(apiClient);
+
+export default apiClient;

@@ -1,0 +1,289 @@
+/* ========================================
+   CONTRADICTION DETECTOR - MODERN DESIGN
+   ======================================== */
+
+.contradiction {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contradiction h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #212529;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contradiction h3::before {
+  content: '⚠️';
+  font-size: 20px;
+}
+
+.contradiction .muted {
+  text-align: center;
+  padding: 30px 20px;
+  color: #adb5bd;
+  font-style: italic;
+  font-size: 14px;
+}
+
+.contradiction-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.card {
+  background: linear-gradient(to right, #fff8e1 0%, #ffffff 100%);
+  border-radius: 10px;
+  padding: 14px 16px;
+  border-left: 4px solid #ffc107;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: all 0.25s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateX(4px);
+  border-left-width: 5px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.conflict-icon {
+  color: #ffc107;
+  font-size: 16px;
+}
+
+.card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #212529;
+  margin: 0;
+}
+
+.card-content {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #495057;
+  margin: 0;
+}
+
+.confidence-badge {
+  display: inline-block;
+  background: #ffc107;
+  color: #000;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Comparison Section */
+.contradiction-comparison {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e9ecef;
+}
+
+.comparison-header {
+  font-size: 15px;
+  font-weight: 600;
+  color: #212529;
+  margin: 0 0 12px 0;
+}
+
+.comparison-placeholder {
+  text-align: center;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  color: #6c757d;
+  font-size: 13px;
+  font-style: italic;
+  border: 2px dashed #dee2e6;
+}
+
+.comparison-items {
+  display: flex;
+  gap: 12px;
+}
+
+.comparison-item {
+  flex: 1;
+  background: #f8f9fa;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.comparison-item h5 {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #495057;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.comparison-item p {
+  margin: 0;
+  font-size: 13px;
+  color: #6c757d;
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contradiction h3 {
+    font-size: 16px;
+  }
+  
+  .card {
+    padding: 12px 14px;
+  }
+  
+  .comparison-items {
+    flex-direction: column;
+  }
+}
+
+.contradiction {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.contradiction h3 {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  color: #1f2937;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contradiction-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contradiction-card {
+  background: #fffbeb;
+  border-left: 4px solid #f59e0b;
+  border-radius: 8px;
+  padding: 16px;
+  transition: all 0.2s;
+}
+
+.contradiction-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.contradiction-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.contradiction-icon {
+  font-size: 16px;
+}
+
+.contradiction-severity {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.contradiction-body h4 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  color: #374151;
+  font-weight: 600;
+}
+
+.conflict-description {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #1f2937;
+  line-height: 1.5;
+}
+
+.conflict-details {
+  background: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin: 8px 0;
+}
+
+.conflict-details small {
+  font-size: 12px;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+.affected-docs {
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.affected-docs ul {
+  margin: 4px 0 0 0;
+  padding-left: 20px;
+  list-style: disc;
+}
+
+.affected-docs li {
+  color: #6b7280;
+  margin: 2px 0;
+}
+
+.contradiction-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.confidence-label {
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.confidence-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.muted {
+  color: #9ca3af;
+  font-style: italic;
+  text-align: center;
+  padding: 20px;
+}

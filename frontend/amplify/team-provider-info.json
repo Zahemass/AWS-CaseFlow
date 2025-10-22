@@ -1,0 +1,33 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-caseflowai-dev-d10cb-authRole",
+      "UnauthRoleArn": "arn:aws:iam::100458166404:role/amplify-caseflowai-dev-d10cb-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::100458166404:role/amplify-caseflowai-dev-d10cb-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-caseflowai-dev-d10cb-deployment",
+      "UnauthRoleName": "amplify-caseflowai-dev-d10cb-unauthRole",
+      "StackName": "amplify-caseflowai-dev-d10cb",
+      "StackId": "arn:aws:cloudformation:us-east-1:100458166404:stack/amplify-caseflowai-dev-d10cb/18816e40-aa70-11f0-903a-1ac15b384991",
+      "AmplifyAppId": "d1gfxwk9m5mcgf",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-caseflowai-dev-d10cb-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    },
+    "categories": {
+      "auth": {
+        "caseflowaia509658c": {}
+      },
+      "storage": {
+        "caseflowdocs": {}
+      },
+      "function": {
+        "getUploadUrl": {
+          "deploymentBucketName": "amplify-caseflowai-dev-d10cb-deployment",
+          "s3Key": "amplify-builds/getUploadUrl-44356f6b326e30447764-build.zip"
+        }
+      },
+      "api": {
+        "caseflowapi": {}
+      }
+    }
+  }
+}

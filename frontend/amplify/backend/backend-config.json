@@ -1,0 +1,87 @@
+{
+  "api": {
+    "caseflowapi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "getUploadUrl"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "auth": {
+    "caseflowaia509658c": {
+      "customAuth": false,
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
+    }
+  },
+  "function": {
+    "getUploadUrl": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "BucketName"
+          ],
+          "category": "storage",
+          "resourceName": "caseflowdocs"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_getUploadUrl_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getUploadUrl"
+        }
+      ]
+    },
+    "AMPLIFY_function_getUploadUrl_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getUploadUrl"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "caseflowdocs": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
+    }
+  }
+}

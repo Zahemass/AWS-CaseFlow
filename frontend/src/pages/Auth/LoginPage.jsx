@@ -1,54 +1,30 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import './LoginPage.css'
+import React from 'react';
+import './LoginPage.css';
+import { LoginForm } from '../../components';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
-  const [form, setForm] = useState({ email: '', password: '' })
-  const navigate = useNavigate()
-
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setForm((prev) => ({ ...prev, [name]: value }))
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log('Login Data:', form)
-    // TODO: connect with backend login endpoint
-    // navigate('/dashboard')
-  }
+  const navigate = useNavigate();
 
   return (
-    <div className="auth-container">
-      <div className="login-box">
-        <h1>Welcome Back</h1>
-
-        <form onSubmit={handleSubmit}>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            value={form.email}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={form.password}
-            onChange={handleChange}
-            required
-          />
-          <button type="submit">Login</button>
-        </form>
-
-        <div className="login-footer">
-          Don’t have an account? <Link to="/register">Sign Up</Link>
+    <div className="auth-page">
+      <div className="auth-card">
+        <div className="auth-header">
+          <h1>Welcome Back 👋</h1>
+          <p className="subtitle">Sign in to continue your journey</p>
         </div>
+
+        <div className="auth-form-container">
+          <LoginForm onLoginSuccess={() => navigate('/dashboard')} />
+        </div>
+
+        <p className="auth-switch">
+          Don’t have an account?{' '}
+          <span onClick={() => navigate('/register')}>Register</span>
+        </p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;

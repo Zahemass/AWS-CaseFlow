@@ -1,81 +1,60 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import React, { useContext } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { useAuthContext } from '../context/AuthContext';
+import { ROUTE_PATHS } from '../constants/routeConstants';
 
-// Auth Pages
-import LoginPage from '../pages/Auth/LoginPage'
-import RegisterPage from '../pages/Auth/RegisterPage'
+// Layouts & Pages
+import MainLayout from '../components/Layout/MainLayout/MainLayout';
+import LoginPage from '../pages/Auth/LoginPage';
+import RegisterPage from '../pages/Auth/RegisterPage';
+import DashboardPage from '../pages/Dashboard/DashboardPage';
+import CasesPage from '../pages/Cases/CasesPage';
+import CaseDetailPage from '../pages/Cases/CaseDetailPage';
+import DocumentsPage from '../pages/Documents/DocumentsPage';
+import AnalysisPage from '../pages/Analysis/AnalysisPage';
+import NotFoundPage from '../pages/NotFound/NotFoundPage';
+import AgentPage from '../pages/Agent/AgentPage';
 
-// Dashboard & Core Pages
-import DashboardPage from '../pages/Dashboard/DashboardPage'
-import CasesPage from '../pages/Cases/CasesPage'
-import DocumentsPage from '../pages/Documents/DocumentsPage'
-import AnalysisPage from '../pages/Analysis/AnalysisPage'
-import AgentPage from '../pages/Agent/AgentPage' // 🧠 Added AI Agent Page
+// Route definitions
+import privateRoutes from './privateRoutes';
+import publicRoutes from './publicRoutes';
+import ProtectedRoute from '../components/Auth/ProtectedRoute/ProtectedRoute';
 
-// Utility Pages
-import NotFoundPage from '../pages/NotFound/NotFoundPage'
+const AppRoutes = () => {
+  const { user } = useAuthContext();
 
-// Layout Wrapper
-import MainLayout from '../components/Layout/MainLayout/MainLayout'
-
-function AppRoutes() {
   return (
-    <Routes>
-      {/* Public Routes (No Layout) */}
-      <Route path="/" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
+    <Router>
+      <Routes>
+        {/* Public Routes */}
+        {publicRoutes.map(({ path, element }, idx) => (
+          <Route key={idx} path={path} element={element} />
+        ))}
 
-      {/* Main Application Routes (With Layout) */}
-      <Route
-        path="/dashboard"
-        element={
-          <MainLayout>
-            <DashboardPage />
-          </MainLayout>
-        }
-      />
+        {/* Private Routes */}
+        {privateRoutes.map(({ path, element }, idx) => (
+          <Route
+            key={idx}
+            path={path}
+            element={
+              <ProtectedRoute user={user}>
+                <MainLayout>{element}</MainLayout>
+              </ProtectedRoute>
+            }
+          />
+        ))}
 
-      <Route
-        path="/cases"
-        element={
-          <MainLayout>
-            <CasesPage />
-          </MainLayout>
-        }
-      />
+        {/* Redirect root to Dashboard if logged in */}
+        <Route
+          path="/"
+          element={<Navigate to={user ? ROUTE_PATHS.DASHBOARD : ROUTE_PATHS.LOGIN} replace />}
+        />
 
-      <Route
-        path="/documents"
-        element={
-          <MainLayout>
-            <DocumentsPage />
-          </MainLayout>
-        }
-      />
+        {/* Catch-all (404) */}
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </Router>
+  );
+};
 
-      <Route
-        path="/analysis"
-        element={
-          <MainLayout>
-            <AnalysisPage />
-          </MainLayout>
-        }
-      />
-
-      {/* 🧠 AI Agent Page */}
-      <Route
-        path="/agent"
-        element={
-          <MainLayout>
-            <AgentPage />
-          </MainLayout>
-        }
-      />
-
-      {/* Fallback for any undefined route */}
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
-  )
-}
-
-export default AppRoutes
+export default AppRoutes;

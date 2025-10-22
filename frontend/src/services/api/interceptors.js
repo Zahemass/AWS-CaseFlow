@@ -1,20 +1,32 @@
-import apiClient from './apiClient'
-import { getToken } from '../auth/tokenManager'
+// src/services/api/interceptors.js
+import { getToken, clearToken } from '../auth/tokenManager';
+import { signOut } from 'aws-amplify/auth'; // ✅ modular import (Amplify v6)
 
-// Attach JWT to every request
-apiClient.interceptors.request.use((config) => {
-  const token = getToken()
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`
-  }
-  return config
-})
+export const setupInterceptors = (client) => {
+  // ✅ Attach Authorization header before each request
+  client.interceptors.request.use(async (config) => {
+    const token = await getToken();
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  });
 
-// Handle responses
-apiClient.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    console.error('API Error:', error)
-    return Promise.reject(error)
-  }
-)
+  // ✅ Handle 401 errors globally
+  client.interceptors.response.use(
+    (response) => response,
+    async (error) => {
+      if (error.response?.status === 401) {
+        try {
+          // Proper v6 sign out
+          await signOut();
+        } catch (err) {
+          console.warn('Sign-out error:', err);
+        }
+        clearToken();
+        window.location.href = '/login';
+      }
+      return Promise.reject(error);
+    }
+  );
+};

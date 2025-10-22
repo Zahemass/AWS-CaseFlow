@@ -1,0 +1,119 @@
+/* =========================
+   Case Stats - Modern Glass Cards
+   ========================= */
+
+.case-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+  padding: 24px;
+  animation: fadeInGrid 0.6s ease both;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 18px 22px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Accent glow effect */
+.stat-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--accent), transparent 60%);
+  opacity: 0.1;
+  transition: opacity 0.3s ease;
+}
+
+.stat-card:hover::before {
+  opacity: 0.25;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(37, 99, 235, 0.15);
+}
+
+/* =========================
+   Stat Content
+   ========================= */
+
+.stat-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #475569;
+}
+
+/* =========================
+   Responsive Design
+   ========================= */
+
+@media (max-width: 768px) {
+  .case-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .stat-card {
+    padding: 16px 18px;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .case-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    justify-content: space-between;
+    padding: 14px 16px;
+  }
+}
+
+/* =========================
+   Animations
+   ========================= */
+
+@keyframes fadeInGrid {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

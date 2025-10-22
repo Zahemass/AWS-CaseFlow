@@ -1,67 +1,63 @@
-import React, { useState, useRef, useEffect } from 'react'
-import './Navbar.css'
-import { FaSun, FaMoon, FaChevronDown, FaUserCircle, FaSignOutAlt } from 'react-icons/fa'
+import React, { useState, useRef, useEffect } from 'react';
+import './Navbar.css';
+import { FaSun, FaMoon, FaChevronDown, FaUserCircle, FaSignOutAlt } from 'react-icons/fa';
+import { useAuthContext } from '../../../context/AuthContext';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 const Navbar = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false)
-  const [dropdownOpen, setDropdownOpen] = useState(false)
-  const dropdownRef = useRef()
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef();
 
-  // Load dark mode preference from localStorage
+  const { logout, user } = useAuthContext();
+
+  // Load dark mode preference
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme')
+    const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
-      document.body.classList.add('dark-mode')
-      setIsDarkMode(true)
+      document.body.classList.add('dark-mode');
+      setIsDarkMode(true);
     }
-  }, [])
+  }, []);
 
-  // Close dropdown when clicking outside
+  // Close dropdown on outside click
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        setDropdownOpen(false)
+        setDropdownOpen(false);
       }
-    }
-    document.addEventListener('click', handleClickOutside)
-    return () => document.removeEventListener('click', handleClickOutside)
-  }, [])
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
 
   // Toggle theme
   const toggleTheme = () => {
     if (isDarkMode) {
-      document.body.classList.remove('dark-mode')
-      localStorage.setItem('theme', 'light')
+      document.body.classList.remove('dark-mode');
+      localStorage.setItem('theme', 'light');
     } else {
-      document.body.classList.add('dark-mode')
-      localStorage.setItem('theme', 'dark')
+      document.body.classList.add('dark-mode');
+      localStorage.setItem('theme', 'dark');
     }
-    setIsDarkMode(!isDarkMode)
-  }
+    setIsDarkMode(!isDarkMode);
+  };
 
   return (
     <header className="navbar">
       <div className="navbar-left">
         <div className="navbar-logo">
-          <img src="/logo192.png" alt="CaseFlow AI" />
+          <i className="bi bi-layers-half" style={{ fontSize: '1.8rem', marginRight: '8px' }}></i>
           <span>CaseFlow AI</span>
         </div>
       </div>
 
       <div className="navbar-right">
-        {/* Theme Toggle */}
-        <button
-          className="theme-toggle"
-          onClick={toggleTheme}
-          title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-        >
-          {isDarkMode ? <FaSun /> : <FaMoon />}
-        </button>
+        
 
         {/* User Profile Dropdown */}
         <div className="navbar-user" ref={dropdownRef}>
           <div className="user-info" onClick={() => setDropdownOpen(!dropdownOpen)}>
-            <img src="https://i.pravatar.cc/40" alt="User" className="user-avatar" />
             <span className="username">Zaheer</span>
             <FaChevronDown className="dropdown-icon" />
           </div>
@@ -71,7 +67,13 @@ const Navbar = () => {
               <button className="dropdown-item">
                 <FaUserCircle /> Profile
               </button>
-              <button className="dropdown-item">
+              <button
+                className="dropdown-item"
+                onClick={() => {
+                  setDropdownOpen(false);
+                  logout();
+                }}
+              >
                 <FaSignOutAlt /> Logout
               </button>
             </div>
@@ -79,7 +81,7 @@ const Navbar = () => {
         </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

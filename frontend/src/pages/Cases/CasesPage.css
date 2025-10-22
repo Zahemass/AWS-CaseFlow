@@ -1,185 +1,19 @@
-/* ====================================
-   CaseFlow AI - Cases Page Styles
-   ==================================== */
-
 .cases-page {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  padding: 2rem;
-  background-color: #f9fafb;
-  font-family: 'Roboto', sans-serif;
-  color: #111827;
+  padding: 20px;
 }
 
-/* ====================================
-   Header
-   ==================================== */
-.cases-page h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--primary-color, #2563eb);
-  margin-bottom: 0.5rem;
-  animation: fadeInDown 0.8s ease-out;
-}
-
-.cases-page p {
-  font-size: 1.1rem;
-  color: #4b5563;
-  margin-bottom: 1.5rem;
-  animation: fadeInUp 1s ease-out;
-}
-
-/* ====================================
-   Filters & Actions
-   ==================================== */
-.case-actions {
+.cases-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-  gap: 1rem;
+  margin-bottom: 20px;
 }
 
-.case-actions input {
-  flex: 1;
-  min-width: 220px;
-  padding: 0.75rem;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  outline: none;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
-}
-
-.case-actions input:focus {
-  border-color: var(--primary-color, #2563eb);
-}
-
-.case-actions button {
-  background: var(--primary-color, #2563eb);
+.cases-header button {
+  background: #3b82f6;
   color: #fff;
   border: none;
+  padding: 8px 14px;
   border-radius: 8px;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 500;
   cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.case-actions button:hover {
-  background: var(--secondary-color, #1e40af);
-}
-
-/* ====================================
-   Cases Grid
-   ==================================== */
-.cases-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-}
-
-.case-card {
-  background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-  padding: 1.5rem;
-  transition: all 0.3s ease;
-}
-
-.case-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.case-card h3 {
-  font-size: 1.25rem;
-  color: var(--primary-color, #2563eb);
-  margin-bottom: 0.5rem;
-}
-
-.case-card p {
-  color: #374151;
-  font-size: 0.95rem;
-  margin-bottom: 1rem;
-}
-
-.case-card button {
-  background: var(--secondary-color, #1e40af);
-  color: #fff;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: background 0.3s ease;
-}
-
-.case-card button:hover {
-  background: var(--primary-color, #2563eb);
-}
-
-/* ====================================
-   Empty State
-   ==================================== */
-.empty-cases {
-  text-align: center;
-  margin-top: 3rem;
-  color: #6b7280;
-  font-size: 1.1rem;
-}
-
-/* ====================================
-   Animations
-   ==================================== */
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ====================================
-   Responsive Design
-   ==================================== */
-@media (max-width: 768px) {
-  .cases-page {
-    padding: 1.5rem;
-  }
-
-  .cases-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .case-actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .case-actions input {
-    width: 100%;
-  }
-
-  .case-actions button {
-    width: 100%;
-  }
 }

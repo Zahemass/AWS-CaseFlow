@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "storage": {
+      "caseflowdocs": [
+        "create",
+        "read",
+        "update"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

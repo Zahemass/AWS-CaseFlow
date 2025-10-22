@@ -1,0 +1,128 @@
+/* =========================
+   Case List Grid - Modern Animated Cards
+   ========================= */
+
+.case-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 30px;
+  animation: fadeInGrid 0.7s ease both;
+}
+
+.case-card {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 0 10px 28px rgba(37, 99, 235, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.6s ease both;
+}
+
+.case-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, rgba(37,99,235,0.05), rgba(29,78,216,0.02));
+  border-radius: 16px;
+  pointer-events: none;
+}
+
+.case-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 16px 40px rgba(37, 99, 235, 0.15);
+}
+
+.case-card h4 {
+  color: #1e293b;
+  margin-bottom: 8px;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.case-card p {
+  color: #475569;
+  font-size: 14px;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.case-card small {
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.case-actions {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Buttons */
+.view-docs-btn,
+.analyze-btn {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.view-docs-btn {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+}
+
+.view-docs-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.3);
+}
+
+.analyze-btn {
+  background: linear-gradient(135deg, #16a34a, #15803d);
+}
+
+.analyze-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(22, 163, 74, 0.3);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInGrid {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .case-list {
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .case-card {
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  .view-docs-btn,
+  .analyze-btn {
+    font-size: 0.85rem;
+    padding: 7px 12px;
+  }
+}

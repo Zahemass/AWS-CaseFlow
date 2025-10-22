@@ -32,12 +32,10 @@ const Sidebar = () => {
 
   // Navigation links (with AI Agent added)
   const navItems = [
-    { path: '/dashboard', label: 'Dashboard', icon: <FaHome /> },
     { path: '/cases', label: 'Cases', icon: <FaFolderOpen /> },
     { path: '/documents', label: 'Documents', icon: <FaFileAlt /> },
-    { path: '/analysis', label: 'AI Analysis', icon: <FaChartPie /> },
-    { path: '/agent', label: 'AI Agent', icon: <FaRobot /> }, // 🧠 NEW LINK
-    { path: '/reports', label: 'Reports', icon: <FaChartPie /> },
+
+   
   ]
 
   return (
