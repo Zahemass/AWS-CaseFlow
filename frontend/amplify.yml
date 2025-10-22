@@ -3,14 +3,16 @@ frontend:
   phases:
     preBuild:
       commands:
-        - npm install    # install dependencies
+        - cd frontend                # go into frontend folder
+        - npm install                # install dependencies
     build:
       commands:
-        - npm run build  # build your Vite app
+        - cd frontend
+        - npm run build              # build the Vite app
   artifacts:
-    baseDirectory: dist  # Amplify will host files from "dist"
+    baseDirectory: frontend/dist     # Amplify will host files from here
     files:
       - '**/*'
   cache:
     paths:
-      - node_modules/**/*
+      - frontend/node_modules/**/*
