@@ -3,13 +3,21 @@ import './Navbar.css';
 import { FaSun, FaMoon, FaChevronDown, FaUserCircle, FaSignOutAlt } from 'react-icons/fa';
 import { useAuthContext } from '../../../context/AuthContext';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef();
 
+  const navigate = useNavigate();
   const { logout, user } = useAuthContext();
+
+  const handleLogout = () => {
+    setDropdownOpen(false);
+    logout();
+    setTimeout(() => navigate('/login'), 300);
+  };
 
   // Load dark mode preference
   useEffect(() => {
@@ -58,7 +66,7 @@ const Navbar = () => {
         {/* User Profile Dropdown */}
         <div className="navbar-user" ref={dropdownRef}>
           <div className="user-info" onClick={() => setDropdownOpen(!dropdownOpen)}>
-            <span className="username">Zaheer</span>
+            <span className="username">Hi</span>
             <FaChevronDown className="dropdown-icon" />
           </div>
 
@@ -69,12 +77,9 @@ const Navbar = () => {
               </button>
               <button
                 className="dropdown-item"
-                onClick={() => {
-                  setDropdownOpen(false);
-                  logout();
-                }}
+               onClick={handleLogout}
               >
-                <FaSignOutAlt /> Logout
+                <FaSignOutAlt  /> Logout
               </button>
             </div>
           )}
